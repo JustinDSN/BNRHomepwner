@@ -8,7 +8,13 @@
 
 #import "BNRItemsViewController.h"
 #import "BNRItemStore.h"
-#import "BNRITem.h"
+#import "BNRItem.h"
+
+@interface BNRItemsViewController()
+
+@property (nonatomic, strong) IBOutlet UIView *headerView;
+
+@end
 
 @implementation BNRItemsViewController
 
@@ -33,6 +39,9 @@
     
     [self.tableView registerClass:[UITableViewCell class]
            forCellReuseIdentifier:@"UITableViewCell"];
+    
+    UIView *header = self.headerView;
+    [self.tableView setTableHeaderView:header];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -49,6 +58,23 @@
     cell.textLabel.text = [item description];
     
     return cell;
+}
+
+- (IBAction)addNewItem:(id)sender {
+    
+}
+
+- (IBAction)toggleEditingMode:(id)sender {
+    
+}
+
+- (UIView *)headerView {
+    if (!_headerView) {
+        [[NSBundle mainBundle] loadNibNamed:@"HeaderView"
+                                      owner:self
+                                    options:nil];
+    }
+    return _headerView;
 }
 
 @end
