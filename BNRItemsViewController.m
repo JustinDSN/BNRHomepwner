@@ -22,9 +22,7 @@
     self = [super initWithStyle:UITableViewStylePlain];
     
     if (self) {
-        for (int i = 0; i < 10; i++) {
-            [[BNRItemStore sharedStore] createItem];
-        }
+
     }
     
     return self;
@@ -60,8 +58,27 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSArray *items = [[BNRItemStore sharedStore] allItems];
+        BNRItem *item = items[indexPath.row];
+        [[BNRItemStore sharedStore] removeItem:item];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath]
+                         withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 - (IBAction)addNewItem:(id)sender {
+    BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
     
+    NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    
+    [self.tableView insertRowsAtIndexPaths:@[indexPath]
+                          withRowAnimation:UITableViewRowAnimationTop];
 }
 
 - (IBAction)toggleEditingMode:(id)sender {
