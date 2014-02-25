@@ -13,8 +13,6 @@
 
 @interface BNRItemsViewController()
 
-@property (nonatomic, strong) IBOutlet UIView *headerView;
-
 @end
 
 @implementation BNRItemsViewController
@@ -23,7 +21,16 @@
     self = [super initWithStyle:UITableViewStylePlain];
     
     if (self) {
-
+        UINavigationItem *navItem = self.navigationItem;
+        navItem.title = @"Homepwner";
+        
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
+                                initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                     target:self
+                                                     action:@selector(addNewItem:)];
+        
+        navItem.rightBarButtonItem = bbi;
+        navItem.leftBarButtonItem = self.editButtonItem;
     }
     
     return self;
@@ -38,9 +45,6 @@
     
     [self.tableView registerClass:[UITableViewCell class]
            forCellReuseIdentifier:@"UITableViewCell"];
-    
-    UIView *header = self.headerView;
-    [self.tableView setTableHeaderView:header];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -102,28 +106,6 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
     
     [self.tableView insertRowsAtIndexPaths:@[indexPath]
                           withRowAnimation:UITableViewRowAnimationTop];
-}
-
-- (IBAction)toggleEditingMode:(id)sender {
-    if (self.isEditing) {
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        
-        [self setEditing:NO animated:YES];
-    }
-    else {
-        [sender setTitle:@"Done" forState:UIControlStateNormal];
-        
-        [self setEditing:YES animated:YES];
-    }
-}
-
-- (UIView *)headerView {
-    if (!_headerView) {
-        [[NSBundle mainBundle] loadNibNamed:@"HeaderView"
-                                      owner:self
-                                    options:nil];
-    }
-    return _headerView;
 }
 
 @end

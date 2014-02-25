@@ -24,7 +24,6 @@
 		D0FDEE9418BBE41800D721A6 /* BNRItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FDEE9318BBE41800D721A6 /* BNRItemsViewController.m */; };
 		D0FDEE9718BBE51000D721A6 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FDEE9618BBE51000D721A6 /* BNRItem.m */; };
 		D0FDEE9A18BBE59300D721A6 /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FDEE9918BBE59300D721A6 /* BNRItemStore.m */; };
-		D0FDEE9C18BBEF9600D721A6 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FDEE9B18BBEF9600D721A6 /* HeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +62,6 @@
 		D0FDEE9618BBE51000D721A6 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 		D0FDEE9818BBE59300D721A6 /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
 		D0FDEE9918BBE59300D721A6 /* BNRItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemStore.m; sourceTree = "<group>"; };
-		D0FDEE9B18BBEF9600D721A6 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +93,6 @@
 			children = (
 				D0FDEE9218BBE41800D721A6 /* BNRItemsViewController.h */,
 				D0FDEE9318BBE41800D721A6 /* BNRItemsViewController.m */,
-				D0FDEE9B18BBEF9600D721A6 /* HeaderView.xib */,
 				D0B276C618BD0FBC0031B201 /* BNRDetailViewController.h */,
 				D0B276C718BD0FBC0031B201 /* BNRDetailViewController.m */,
 				D0B276C818BD0FBC0031B201 /* BNRDetailViewController.xib */,
@@ -247,7 +244,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0B276CA18BD0FBC0031B201 /* BNRDetailViewController.xib in Resources */,
-				D0FDEE9C18BBEF9600D721A6 /* HeaderView.xib in Resources */,
 				D0FDEE6E18BBE23200D721A6 /* InfoPlist.strings in Resources */,
 				D0FDEE7618BBE23200D721A6 /* Images.xcassets in Resources */,
 			);
