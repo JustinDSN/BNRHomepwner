@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D0B276C918BD0FBC0031B201 /* BNRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B276C718BD0FBC0031B201 /* BNRDetailViewController.m */; };
 		D0B276CA18BD0FBC0031B201 /* BNRDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B276C818BD0FBC0031B201 /* BNRDetailViewController.xib */; };
+		D0B276CD18BD24300031B201 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B276CC18BD24300031B201 /* BNRImageStore.m */; };
 		D0FDEE6418BBE23200D721A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FDEE6318BBE23200D721A6 /* Foundation.framework */; };
 		D0FDEE6618BBE23200D721A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FDEE6518BBE23200D721A6 /* CoreGraphics.framework */; };
 		D0FDEE6818BBE23200D721A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FDEE6718BBE23200D721A6 /* UIKit.framework */; };
@@ -40,6 +41,8 @@
 		D0B276C618BD0FBC0031B201 /* BNRDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNRDetailViewController.h; path = Homepwner/BNRDetailViewController.h; sourceTree = "<group>"; };
 		D0B276C718BD0FBC0031B201 /* BNRDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNRDetailViewController.m; path = Homepwner/BNRDetailViewController.m; sourceTree = "<group>"; };
 		D0B276C818BD0FBC0031B201 /* BNRDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BNRDetailViewController.xib; path = Homepwner/BNRDetailViewController.xib; sourceTree = "<group>"; };
+		D0B276CB18BD24300031B201 /* BNRImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageStore.h; sourceTree = "<group>"; };
+		D0B276CC18BD24300031B201 /* BNRImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageStore.m; sourceTree = "<group>"; };
 		D0FDEE6018BBE23200D721A6 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FDEE6318BBE23200D721A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0FDEE6518BBE23200D721A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -95,6 +98,8 @@
 				D0FDEE9318BBE41800D721A6 /* BNRItemsViewController.m */,
 				D0B276C618BD0FBC0031B201 /* BNRDetailViewController.h */,
 				D0B276C718BD0FBC0031B201 /* BNRDetailViewController.m */,
+				D0B276CB18BD24300031B201 /* BNRImageStore.h */,
+				D0B276CC18BD24300031B201 /* BNRImageStore.m */,
 				D0B276C818BD0FBC0031B201 /* BNRDetailViewController.xib */,
 				D0FDEE9518BBE51000D721A6 /* BNRItem.h */,
 				D0FDEE9618BBE51000D721A6 /* BNRItem.m */,
@@ -266,6 +271,7 @@
 			files = (
 				D0B276C918BD0FBC0031B201 /* BNRDetailViewController.m in Sources */,
 				D0FDEE9418BBE41800D721A6 /* BNRItemsViewController.m in Sources */,
+				D0B276CD18BD24300031B201 /* BNRImageStore.m in Sources */,
 				D0FDEE9718BBE51000D721A6 /* BNRItem.m in Sources */,
 				D0FDEE9A18BBE59300D721A6 /* BNRItemStore.m in Sources */,
 				D0FDEE7018BBE23200D721A6 /* main.m in Sources */,
