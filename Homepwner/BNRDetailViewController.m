@@ -10,7 +10,7 @@
 #import "BNRItem.h"
 #import "BNRImageStore.h"
 
-@interface BNRDetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface BNRDetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
@@ -22,6 +22,8 @@
 @end
 
 @implementation BNRDetailViewController
+
+#pragma mark - View lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -59,11 +61,15 @@
     item.valueInDollars = [self.valueField.text intValue];
 }
 
+#pragma mark - Properties
+
 - (void)setItem:(BNRItem *)item {
     _item = item;
     self.navigationItem.title = _item.itemName;
 }
 
+
+#pragma mark - Actions
 - (IBAction)takePicture:(id)sender {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
@@ -79,6 +85,11 @@
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
+- (IBAction)backgroundTapped:(id)sender {
+    [self.view endEditing:YES];
+}
+
+#pragma mark - Image Picker Delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     
@@ -88,4 +99,11 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - Text Field Delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
 @end
