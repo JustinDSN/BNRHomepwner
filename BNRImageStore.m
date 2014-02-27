@@ -16,10 +16,10 @@
 
 @implementation BNRImageStore
 
-- (instancetype)sharedStore {
++ (instancetype)sharedStore {
     static BNRImageStore *sharedStore = nil;
     
-    if (sharedStore) {
+    if (!sharedStore) {
         sharedStore = [[BNRImageStore alloc] initPrivate];
     }
     return sharedStore;
@@ -43,11 +43,11 @@
 }
 
 - (void)setImage:(UIImage *)image forKey:(NSString *)key {
-    [self.dictionary setObject:image forKey:key];
+    self.dictionary[key] = image;
 }
 
 - (UIImage *)imageForKey:(NSString *)key {
-    return [self.dictionary objectForKey:key];
+    return self.dictionary[key];
 }
 
 - (void)deleteImageForKey:(NSString *)key {
