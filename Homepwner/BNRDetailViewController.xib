@@ -6,7 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BNRDetailViewController">
             <connections>
+                <outlet property="cameraButton" destination="SnW-HD-O3S" id="yuC-b8-GDu"/>
                 <outlet property="dateLabel" destination="3M8-5h-rQR" id="Liy-Yo-Cel"/>
+                <outlet property="imageView" destination="vyV-q5-amb" id="bj5-c5-vgy"/>
                 <outlet property="nameField" destination="0SC-Yl-p0e" id="pIB-ri-Q7C"/>
                 <outlet property="serialNumberField" destination="An5-8g-cb4" id="WYQ-Pm-31f"/>
                 <outlet property="toolbar" destination="DVg-ri-SR2" id="rY7-9m-hy4"/>
@@ -103,6 +105,10 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vyV-q5-amb">
+                    <rect key="frame" x="20" y="241" width="280" height="205"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
