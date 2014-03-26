@@ -22,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 @property (strong, nonatomic) UIPopoverController *imagePickerPopover;
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *serialNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+
 @end
 
 @implementation BNRDetailViewController
@@ -42,6 +46,12 @@
                                                                                         action:@selector(cancel:)];
             self.navigationItem.leftBarButtonItem = cancelItem;
         }
+        
+        NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+        [defaultCenter addObserver:self
+                          selector:@selector(updateFonts)
+                              name:UIContentSizeCategoryDidChangeNotification
+                            object:nil];
     }
 
     return self;
@@ -53,6 +63,12 @@
                                  userInfo:nil];
     return nil;
 }
+
+- (void)dealloc {
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter removeObserver:self];
+}
+
 
 #pragma mark - View lifecycle
 
@@ -82,6 +98,8 @@
     UIImage *imageToDisplay = [[BNRImageStore sharedStore] imageForKey:imageKey];
     
     self.imageView.image = imageToDisplay;
+    
+    [self updateFonts];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -199,6 +217,19 @@
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
     NSLog(@"User dismissed popover");
     self.imagePickerPopover = nil;
+}
+
+#pragma mark - Methods
+- (void)updateFonts {
+    UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.nameLabel.font = font;
+    self.serialNumberLabel.font = font;
+    self.valueLabel.font = font;
+    self.dateLabel.font = font;
+    
+    self.nameField.font = font;
+    self.serialNumberField.font = font;
+    self.valueLabel.font = font;
 }
 
 @end
