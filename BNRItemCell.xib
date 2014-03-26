@@ -47,19 +47,33 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqO-4f-Oua">
+                        <rect key="frame" x="2" y="2" width="40" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="showImage:" destination="2YT-WJ-qgT" eventType="touchUpInside" id="hcV-Dc-pzD"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="g8c-wq-iuv" firstAttribute="leading" secondItem="UkY-R9-XFe" secondAttribute="trailing" constant="8" id="3Y1-Iz-6By"/>
                     <constraint firstItem="4N3-fa-dxI" firstAttribute="leading" secondItem="U8M-GG-G5J" secondAttribute="leading" constant="2" id="CGJ-T7-sCp"/>
                     <constraint firstAttribute="bottom" secondItem="UkY-R9-XFe" secondAttribute="bottom" constant="1" id="G2X-fv-CKT"/>
+                    <constraint firstItem="DqO-4f-Oua" firstAttribute="trailing" secondItem="4N3-fa-dxI" secondAttribute="trailing" id="GC4-mu-Sef"/>
                     <constraint firstAttribute="centerY" secondItem="4N3-fa-dxI" secondAttribute="centerY" id="Qkd-vd-dFP"/>
+                    <constraint firstItem="DqO-4f-Oua" firstAttribute="leading" secondItem="4N3-fa-dxI" secondAttribute="leading" id="RgE-ie-5CR"/>
                     <constraint firstAttribute="trailing" secondItem="g8c-wq-iuv" secondAttribute="trailing" constant="20" id="aBT-2K-pjP"/>
                     <constraint firstItem="UkY-R9-XFe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="O0D-aF-ozK" secondAttribute="bottom" constant="5" id="dHx-z9-ikQ"/>
                     <constraint firstItem="O0D-aF-ozK" firstAttribute="top" secondItem="U8M-GG-G5J" secondAttribute="top" constant="1" id="h2c-86-5ed"/>
                     <constraint firstItem="O0D-aF-ozK" firstAttribute="leading" secondItem="4N3-fa-dxI" secondAttribute="trailing" constant="8" id="iKV-PQ-dpP"/>
                     <constraint firstItem="g8c-wq-iuv" firstAttribute="leading" secondItem="O0D-aF-ozK" secondAttribute="trailing" constant="8" id="poG-Tr-Wsr"/>
                     <constraint firstAttribute="centerY" secondItem="g8c-wq-iuv" secondAttribute="centerY" id="r0G-gT-b2x"/>
+                    <constraint firstItem="DqO-4f-Oua" firstAttribute="bottom" secondItem="4N3-fa-dxI" secondAttribute="bottom" id="roc-2r-Cay"/>
                     <constraint firstItem="UkY-R9-XFe" firstAttribute="leading" secondItem="4N3-fa-dxI" secondAttribute="trailing" constant="8" id="tDB-6M-apk"/>
+                    <constraint firstItem="DqO-4f-Oua" firstAttribute="top" secondItem="4N3-fa-dxI" secondAttribute="top" id="xb2-B3-wMm"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
