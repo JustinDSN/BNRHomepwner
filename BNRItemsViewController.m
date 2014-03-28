@@ -36,12 +36,20 @@
         
         navItem.rightBarButtonItem = bbi;
         navItem.leftBarButtonItem = self.editButtonItem;
+        
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
     }
     
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self
                       selector:@selector(updateTableViewForDynamicTypeSize)
                           name:UIContentSizeCategoryDidChangeNotification
+                        object:nil];
+    
+    [defaultCenter addObserver:self
+                      selector:@selector(localeChanged:)
+                          name:NSCurrentLocaleDidChangeNotification
                         object:nil];
     
     return self;
@@ -56,12 +64,15 @@
     [defaultCenter removeObserver:self];
 }
 
+#pragma mark View Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     UINib *nib = [UINib nibWithNibName:@"BNRItemCell" bundle:nil];
     
     [self.tableView registerNib:nib forCellReuseIdentifier:@"BNRItemCell"];
+    
+    self.tableView.restorationIdentifier = @"BNRItemsViewControllerTableView";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,6 +81,19 @@
     [self updateTableViewForDynamicTypeSize];
 }
 
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder {
+    [coder encodeBool:self.isEditing forKey:@"TableViewIsEditing"];
+    
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder {
+    self.editing = [coder decodeBoolForKey:@"TableViewIsEditing"];
+    
+    [super decodeRestorableStateWithCoder:coder];
+}
+
+#pragma mark TableView Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[[BNRItemStore sharedStore] allItems] count];
 }
@@ -82,7 +106,14 @@
     
     cell.nameLabel.text = item.itemName;
     cell.serialNumberLabel.text = item.serialNumber;
-    cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+    
+    static NSNumberFormatter *currencyFormatter = nil;
+    if (!currencyFormatter) {
+        currencyFormatter = [[NSNumberFormatter alloc] init];
+        currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    }
+    cell.valueLabel.text = [currencyFormatter stringFromNumber:@(item.valueInDollars)];
+    
     cell.thumbnailView.image = item.thumbnail;
     
     if (item.valueInDollars > 50) {
@@ -166,7 +197,7 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
     };
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewControler];
-    
+    navController.restorationIdentifier = NSStringFromClass([navController class]);
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
     
     [self presentViewController:navController animated:YES completion:nil];
@@ -193,6 +224,45 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
     
     NSNumber *cellHeight = cellHeightDictionary[userSize];
     [self.tableView setRowHeight:cellHeight.floatValue];
+    [self.tableView reloadData];
+}
+
+#pragma mark UIViewControllerRestoration
++ (UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder {
+    return [[self alloc] init];
+}
+
+#pragma mark UIDataSourceModelAssociation
+- (NSString *)modelIdentifierForElementAtIndexPath:(NSIndexPath *)idx inView:(UIView *)view {
+    NSString *identifier = nil;
+    
+    if (idx && view) {
+        BNRItem *item = [[BNRItemStore sharedStore] allItems][idx.row];
+        identifier = item.itemKey;
+    }
+    
+    return identifier;
+}
+
+- (NSIndexPath *)indexPathForElementWithModelIdentifier:(NSString *)identifier inView:(UIView *)view {
+    NSIndexPath *indexPath = nil;
+    
+    if (identifier && view) {
+        NSArray *items = [[BNRItemStore sharedStore] allItems];
+        
+        for (BNRItem *item in items) {
+            if ([identifier isEqualToString:item.itemKey]) {
+                int row = [items indexOfObjectIdenticalTo:item];
+                indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+                break;
+            }
+        }
+    }
+    
+    return indexPath;
+}
+
+- (void)localeChanged:(NSNotification *)note {
     [self.tableView reloadData];
 }
 @end

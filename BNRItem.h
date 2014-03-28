@@ -1,32 +1,26 @@
 //
 //  BNRItem.h
-//  RandomItems
+//  Homepwner
 //
-//  Created by Justin Steffen on 2/22/14.
+//  Created by Justin Steffen on 3/27/14.
 //  Copyright (c) 2014 Justin Steffen. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface BNRItem : NSObject <NSCoding>
 
-@property (nonatomic, copy) NSString *itemName;
-@property (nonatomic, copy) NSString *serialNumber;
+@interface BNRItem : NSManagedObject
+
+@property (nonatomic, strong) NSString * itemName;
+@property (nonatomic, strong) NSString * serialNumber;
 @property (nonatomic) int valueInDollars;
-@property (nonatomic, readonly, strong) NSDate *dateCreated;
-@property (nonatomic, copy) NSString *itemKey;
-@property (nonatomic, strong) UIImage *thumbnail;
-
-+ (instancetype)randomItem;
-
-- (instancetype)initWithItemName:(NSString *)name
-                  valueInDollars:(int)value
-                    serialNumber:(NSString *)sNumber;
-
-- (instancetype)initWithItemName:(NSString *)name;
-
-- (instancetype)initWithItemName:(NSString *)name
-                    serialNumber:(NSString *)sNumber;
+@property (nonatomic, strong) NSDate * dateCreated;
+@property (nonatomic, strong) NSString * itemKey;
+@property (nonatomic, strong) UIImage * thumbnail;
+@property (nonatomic) double orderingValue;
+@property (nonatomic, strong) NSManagedObject *assetType;
 
 - (void)setThumbnailFromImage:(UIImage *)image;
+
 @end

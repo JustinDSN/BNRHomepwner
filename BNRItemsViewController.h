@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BNRItemsViewController : UITableViewController
+@interface BNRItemsViewController : UITableViewController <UIViewControllerRestoration, UIDataSourceModelAssociation>
 
 @end
